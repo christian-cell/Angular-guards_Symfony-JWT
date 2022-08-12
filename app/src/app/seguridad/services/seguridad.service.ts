@@ -13,12 +13,24 @@ export class SeguridadService {
     private router : Router
   ) { }
 
- 
-
-  LogUser(body:any){
-
+  CreateUser(body:any){
     
 
+    return this.http.post(environment.url + 'registro/nuevo' , body , {responseType:'text'})
+    .toPromise().then((data:any)=>{
+      console.log(data);
+    })
+
+  }
+
+  CreateUserByGet(username:any , password:any){
+    
+
+    return this.http.get(environment.url + 'registro/nuevo/get/' + username + '/' + password , {responseType:'text'})
+
+  }
+
+  LogUser(body:any){
 
     return this.http.post(environment.url + 'api/login_check' , body)
     .toPromise().then((res:any)=>{

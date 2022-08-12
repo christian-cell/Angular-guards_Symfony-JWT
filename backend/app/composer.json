@@ -72,6 +72,7 @@
         }
     },
     "require-dev": {
-        "symfony/debug-bundle": "5.4.*"
+        "symfony/debug-bundle": "5.4.*",
+        "symfony/var-dumper": "5.4.*"
     }
 }
