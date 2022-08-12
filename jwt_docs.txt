@@ -30,6 +30,9 @@ $ bin/console security:hash-password
 
 instalamos el bundle de jwt
 
+creamos directorio jwt
+$ mkdir -p config/jwt
+
 https://github.com/lexik/LexikJWTAuthenticationBundle
 
 $ composer require "lexik/jwt-authentication-bundle"
@@ -42,6 +45,9 @@ y configura el JWT_PASSPHRASE en el .env
 
 $ openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
 tipeamos y repetimos el password y lo configuramos en el .env
+JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
+JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
+JWT_PASSPHRASE=secret
 
 ahora a por la publica
 $ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout

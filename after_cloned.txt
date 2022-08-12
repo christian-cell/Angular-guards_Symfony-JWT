@@ -1,0 +1,31 @@
+después de clonar este repositorio
+
+instalar dependencias de angular
+
+$ npm install
+
+arrancamos el servidor
+
+$ ng serve
+
+y para symfony
+
+dentro del contenedor
+
+$ docker exec -it php74-container bash
+
+instalamos 
+
+$composer install
+
+nos traemos el .env y lo pegamos en el de symfony
+
+creamos la base de datos
+
+$ docker-compose run --rm php74-service php bin/console doctrine:database:create
+
+si ya está creada migramos las entidades dentro del contenedor 
+
+$ docker exec -it php74-container bash
+
+

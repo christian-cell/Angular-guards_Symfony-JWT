@@ -22,15 +22,15 @@ export class ClientesService {
 
   GetClientes(){
 
-    let token = window.localStorage.getItem('token');
+    /* let token = window.localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
-    })
+    }) */
 
-    const requestOptions = { headers: headers };
+    // const requestOptions = { headers: headers };
     
-    return this.http.get(environment.url + 'api/clientes/list' , requestOptions);
+    return this.http.get(environment.url + 'api/clientes/list' /* , requestOptions */);
   }
 
 }
