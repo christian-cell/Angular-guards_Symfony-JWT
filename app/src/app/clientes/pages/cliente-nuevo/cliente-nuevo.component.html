@@ -1,0 +1,38 @@
+<div class="form_container" >
+    <div   >
+        <!-- (ngSubmit)="CreateUser(form)" #form="ngForm" -->
+        <form (ngSubmit)="CrearCliente(form)" #form="ngForm" action="">
+
+            <div>
+                <label class="form-label" id="nombre" name="nombre" for="nombre">Nombre</label>
+                <input class="form-control" type="text" name="nombre" ngModel  >
+            </div>
+            <div>
+                <label class="form-label" id="apellido_1" name="apellido_1" for="apellido_1">Primer Apellido</label>
+                <input class="form-control" type="text" name="apellido_1" ngModel  >
+            </div>
+            <div>
+                <label class="form-label" id="apellido_2" name="apellido_2" for="apellido_2">Segundo Apellido</label>
+                <input class="form-control" type="text" name="apellido_2" ngModel  >
+            </div>
+            <div>
+                <label class="form-label" id="edad" name="edad" for="edad">Edad</label>
+                <input class="form-control" type="text" name="edad" ngModel  >
+            </div>
+            <div>
+                <label class="form-label" id="email" name="email" for="email">Email</label>
+                <input class="form-control" type="text" name="email" ngModel  >
+            </div>
+            <div>
+                <label class="form-label" id="phone_number" name="phone_number" for="phone_number">Telefono</label>
+                <input class="form-control" type="text" name="phone_number" ngModel  >
+            </div>
+            
+
+            <div>
+                <button class="btn btn-primary" type="submit" > Crear Cliente </button>
+            </div>
+
+        </form>
+    </div>
+</div>

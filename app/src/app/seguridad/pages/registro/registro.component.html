@@ -1,0 +1,36 @@
+<div class="form_container" >
+    <div>
+
+        <div>
+            <span>
+                REGISTRO
+            </span>
+        </div>
+        
+        <button  (click)="IrALogin()" > Sign In </button>
+        
+        <div class="form_container" >
+            <div   >
+                <!-- (ngSubmit)="CreateUser(form)" #form="ngForm" -->
+                <form (ngSubmit)="UserRegister(form)" #form="ngForm" action="">
+        
+                    <div>
+                        <label class="form-label" id="email" name="email" for="email">Email</label>
+                        <input class="form-control" type="text" name="email" ngModel  >
+                    </div>
+                    <div>
+                        <label class="form-label" id="password" name="password" for="password">Password</label>
+                        <input class="form-control" type="password" name="password" ngModel  >
+                    </div>
+        
+                    
+        
+                    <div>
+                        <button class="btn btn-primary" type="submit" > Crear Cliente </button>
+                    </div>
+        
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

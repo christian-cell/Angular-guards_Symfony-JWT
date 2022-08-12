@@ -1,0 +1,115 @@
+para utilizar jwt y securizar las rutas del lado del servidor 
+
+$ composer require symfony/security-bundle
+
+en config/bundles añade el bundle de secutity   
+
+creamos el usuario
+
+$ php bin/console make:user
+
+crea una entidad llamada User , no hacer caso a los errores que pueda mostrar por el momento
+
+$ bin/console make:migration
+
+crea la migración
+
+bin/console doctrine:migrations:migrate
+
+la migra
+
+vamos a dbeaver y creamos a mano un usuario nuevo con id 1 , email cualquiera , roles será
+un array de strings con DOBLE COMILLAS ["ROLE_ADMIN", ...] password lo generamos encriptado
+en la terminal con ...
+
+$ bin/console security:encode-password 
+
+aunque este esta desfasado y la version 6 de symfony tenemos que usar 
+
+$ bin/console security:hash-password
+
+instalamos el bundle de jwt
+
+https://github.com/lexik/LexikJWTAuthenticationBundle
+
+$ composer require "lexik/jwt-authentication-bundle"
+
+generamos el par de claves
+
+$php bin/console lexik:jwt:generate-keypair
+
+y configura el JWT_PASSPHRASE en el .env
+
+$ openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+tipeamos y repetimos el password y lo configuramos en el .env
+
+ahora a por la publica
+$ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
+
+de las 2 maneras vale , SI DÁ ERRORES de legibilidad del private.pem
+damos permisos a jwt 777
+
+
+
+vamos config/packages/lexik_jwt_authentication.yaml
+añadimos el tiempo en el que el token va a caducar en este caso 5 horas
+
+token_ttl: 18000 # in seconds, default is 3600
+
+__________________________________________ CONFIGURAMOS config/packages/security.yaml________________________________
+
+en el objeto firewalls
+
+pegamos e identamos bien lo siguiente
+login:
+    pattern: ^/api/login
+    stateless: true
+    json_login:
+        check_path: /api/login_check # or api_login_check as defined in config/routes.yaml
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+api:
+    pattern:   ^/api
+    stateless: true
+    guard:
+        authenticators:
+            - lexik_jwt_authentication.jwt_token_authenticator
+
+
+dice que todos los usuarios pueden ir a ^/api/login incluso los anonimos pero al resto de endpoints que le 
+sigan a ^/api NO ,
+
+entonces para asegurar las rutas todas deben de empezar por "/api"
+vamos a los controladores y modificamos la ruta principar de la clase añadiendo /api/ al principio
+SIN OLVIDAD EL SLASH DEL COMIENZO
+
+POR ULTIMO EN EL OBJETO access-control añadimos
+- { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+- { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+
+_______________________________________ CONFIGURAMOS config/routes.yaml________________________________
+añadiendo
+
+api_login_check:
+    path: /api/login_check
+
+
+_______________________________________ OBTENEMOS EL TOKEN ____________________________________________
+
+con curl
+$ curl -X POST -H "Content-Type: application/json" http://localhost:8080/api/login_check -d '{"username":"fernando@gmail.com","password":"secret"}'
+fernando@gmail.com
+
+o si enviamos en POSTMAN este cuerpo
+{"username":"fernando@gmail.com","password":"secret"}
+
+nos devolverá el token
+
+
+
+_____________________________ EN EL CLIENTE ____________________________________________
+
+modificamos las rutas añadiendo el path /api al comienzo y generamos un http interceptor
+
+$ ng generate resolver user
