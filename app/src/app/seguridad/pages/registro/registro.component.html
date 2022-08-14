@@ -1,36 +1,50 @@
-<div class="form_container" >
-    <div>
+<div >
+    <div class="row d-flex justify-content-center " >
 
-        <div>
-            <span>
-                REGISTRO
-            </span>
-        </div>
-        
-        <button  (click)="IrALogin()" > Sign In </button>
-        
-        <div class="form_container" >
-            <div   >
-                <!-- (ngSubmit)="CreateUser(form)" #form="ngForm" -->
-                <form (ngSubmit)="UserRegister(form)" #form="ngForm" action="">
-        
-                    <div>
-                        <label class="form-label" id="email" name="email" for="email">Email</label>
-                        <input class="form-control" type="text" name="email" ngModel  >
-                    </div>
-                    <div>
-                        <label class="form-label" id="password" name="password" for="password">Password</label>
-                        <input class="form-control" type="password" name="password" ngModel  >
-                    </div>
-        
-                    
-        
-                    <div>
-                        <button class="btn btn-primary" type="submit" > Crear Cliente </button>
-                    </div>
-        
-                </form>
+        <div style="padding:20px " class="col-xs-12 col-sm-12 col-md-10 col-lg-8" >
+            <div>
+                <span>
+                    REGISTRO
+                </span>
+            </div>
+            
+            <button  (click)="IrALogin()" > Sign In </button>
+            
+            <div  >
+                <div class="card  " style="width:90%;padding:20px" >
+                    <!-- (ngSubmit)="UserRegister(form)" #form="ngForm" -->
+                    <form [formGroup]="formularioRegistro" (ngSubmit)="UserRegister()" action="">
+            
+                        <div style="width:90%" >
+                            <label class="form-label" id="email" name="email" for="email">Email</label>
+                            <input formControlName="email" class="form-control" type="text" name="email" ngModel  >
+                            <span style="color : red;" *ngIf="this.formularioRegistro.get('email')?.errors?.['pattern']">
+                                (El mail no puede quedar vacío)
+                            </span>
+                        </div>
+                        <div style="width:90%" >
+                            <label class="form-label" id="password" name="password" for="password">Password</label>
+                            <input formControlName="password" class="form-control" type="password" name="password" ngModel  >
+                            <span style="color : red;" *ngIf="this.formularioRegistro.get('password')?.errors?.['pattern']">
+                                (password ha de tener minimo de 8 caracteres , minúsculas y mayúsculas , numeros y caracteres especiales)
+                            </span>
+                        </div>
+            
+                        <!-- At least 8 characters in length
+                        Lowercase letters
+                        Uppercase letters
+                        Numbers
+                        Special characters -->
+            
+                        <div>
+                            <button class="btn btn-primary form_submit_button " type="submit" > Crear Cliente </button>
+                        </div>
+            
+                    </form>
+                    <div>{{resultado}}</div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>

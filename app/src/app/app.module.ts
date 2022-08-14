@@ -7,16 +7,20 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputTypeDirective } from './directives/input-type.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
+    InputTypeDirective,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   
   ],
   providers: [

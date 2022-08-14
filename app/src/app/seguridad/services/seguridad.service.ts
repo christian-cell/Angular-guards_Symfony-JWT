@@ -13,6 +13,10 @@ export class SeguridadService {
     private router : Router
   ) { }
 
+  /* CheckIfExist(email:any){
+    return this.http.get(environment.url + 'registro/userChecker/' + email)
+  } */
+
   CreateUser(body:any){
     
 

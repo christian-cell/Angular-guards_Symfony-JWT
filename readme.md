@@ -36,3 +36,8 @@ $ npm install bootstrap jquery @popperjs/core
 
 review in angular.json the arrys of styles and scripts
 
+PARA CORRER EL DUMPER dentro del contenedor de php
+
+composer require symfony/debug-bundle --dev
+
+$ bin/console server:dump

@@ -44,6 +44,7 @@ $php bin/console lexik:jwt:generate-keypair
 y configura el JWT_PASSPHRASE en el .env
 
 $ openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pkeyopt rsa_keygen_bits:4096
+
 tipeamos y repetimos el password y lo configuramos en el .env
 JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
 JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem

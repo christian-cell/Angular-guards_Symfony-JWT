@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-.form_container{
+/* .form_container{
     display:flex;
     justify-content: center;
 }
 
 .form_container>div{
     width:50%;
+} */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form_submit_button{
+    width:100%;
+    margin-top:10px
 }
