@@ -10,13 +10,13 @@ const routes : Routes=[
     path:'',
     children:[
       {
-        path:'listProductos' , component : ProductosComponent
+        path:'list' , component : ProductosComponent
       },
       {
-        path:'productonuevo' , component : ProductoNuevoComponent
+        path:'nuevo' , component : ProductoNuevoComponent
       },
       {
-        path:'**' , redirectTo :'listProductos' , pathMatch:'full'
+        path:'**' , redirectTo :'list' , pathMatch:'full'
       }
     ]
   }

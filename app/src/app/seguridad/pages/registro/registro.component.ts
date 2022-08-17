@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   /* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g */
 
   formularioRegistro = new FormGroup({
-    email : new FormControl('', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    username : new FormControl('', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
 
     /* 
       PASSWORD
@@ -68,7 +68,9 @@ export class RegistroComponent implements OnInit {
 
       console.log(this.formularioRegistro.value);
 
-      this.seguridadService.CreateUserByGet(this.formularioRegistro.value.email ,this.formularioRegistro.value.password)
+      this.seguridadService.CreateUser(this.formularioRegistro.value);
+
+      /* this.seguridadService.CreateUserByGet(this.formularioRegistro.value.email ,this.formularioRegistro.value.password)
       .subscribe((res:any)=>{
         console.log(res);
 
@@ -81,7 +83,7 @@ export class RegistroComponent implements OnInit {
           this.router.navigate(['seguridad/login']);
         }
         
-      })
+      }) */
       
       // let cliente = this.formularioRegistro.value;
     }else{

@@ -20,7 +20,7 @@ export class SeguridadService {
   CreateUser(body:any){
     
 
-    return this.http.post(environment.url + 'registro/nuevo' , body , {responseType:'text'})
+    return this.http.post(environment.url + 'api/registro/nuevo' , body , {responseType:'text'})
     .toPromise().then((data:any)=>{
       console.log(data);
     })
@@ -30,7 +30,7 @@ export class SeguridadService {
   CreateUserByGet(username:any , password:any){
     
 
-    return this.http.get(environment.url + 'registro/nuevo/get/' + username + '/' + password , {responseType:'text'})
+    return this.http.get(environment.url + 'api/registro/nuevo/get/' + username + '/' + password , {responseType:'text'})
 
   }
 

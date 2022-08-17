@@ -16,9 +16,9 @@
                     <form [formGroup]="formularioRegistro" (ngSubmit)="UserRegister()" action="">
             
                         <div style="width:90%" >
-                            <label class="form-label" id="email" name="email" for="email">Email</label>
-                            <input formControlName="email" class="form-control" type="text" name="email" ngModel  >
-                            <span style="color : red;" *ngIf="this.formularioRegistro.get('email')?.errors?.['pattern']">
+                            <label class="form-label" id="username" name="username" for="username">Email</label>
+                            <input formControlName="username" class="form-control" type="text" name="username" ngModel  >
+                            <span style="color : red;" *ngIf="this.formularioRegistro.get('username')?.errors?.['pattern']">
                                 (El mail no puede quedar vacío)
                             </span>
                         </div>

@@ -74,13 +74,13 @@ class SecurityController extends AbstractController
     {
       
 
-      $request = $this->transformJsonBody($request);
-   
-      $user = new User();
-    
-      if ($request->isMethod('POST')) {
+        $request = $this->transformJsonBody($request);
+        /* dump($request);
+        dump($request->get("username")); */
+        $user = new User();
+        $user->setEmail($request->get("username"));
         $user->setUsername($request->get("username"));
-      
+    
         $user->setPassword($passwordEncoder->encodePassword($user , $request->get("password")));
 
         $em->persist($user);
@@ -90,26 +90,25 @@ class SecurityController extends AbstractController
             'cliente creado con exito',
             Response::HTTP_OK
         );
-      }
-      
-      
-        /* $user = new User();
+        /* 
+        $request = $this->transformJsonBody($request);
 
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+        $cliente = new Clientes;
+        $cliente->setNombre($request->get('nombre'));
+        $cliente->setApellido1($request->get('apellido_1'));
+        $cliente->setApellido2($request->get('apellido_2'));
+        $cliente->setEdad($request->get('edad'));
+        $cliente->setEmail($request->get('email'));
+        $cliente->setPhoneNumber($request->get('phone_number'));
 
-        if ($request->isMethod('POST')) {
+        $em->persist($cliente);
+        $em->flush();
 
-            try {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($user);
-                $em->flush();
-
-                return new JsonResponse($user);
-            } catch (\Exception $e) {
-                return new JsonResponse($e->getMessage(), 500);
-            }
-        } */
+        return new Response(
+            'cliente creado con exito',
+            Response::HTTP_OK
+        ); 
+        */
     }
 
    

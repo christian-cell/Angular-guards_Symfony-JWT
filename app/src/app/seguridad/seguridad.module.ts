@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 
 
@@ -15,7 +16,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

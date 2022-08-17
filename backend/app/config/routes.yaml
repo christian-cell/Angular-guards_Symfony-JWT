@@ -1,5 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+SecurityController:
+    controller: App\Controller\SecurityController::CreateNewUser
+    path: /api/registro/nuevo
+
 api_login_check:
     path: /api/login_check
+
