@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { InputPasswordModule } from '../directives/input-password/input-password.module';
 
 
 
@@ -26,7 +27,8 @@ import { LogoutComponent } from './pages/logout/logout.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    InputPasswordModule
   ]
 })
 export class SeguridadModule { }

@@ -68,7 +68,7 @@ export class RegistroComponent implements OnInit {
 
       console.log(this.formularioRegistro.value);
 
-      this.seguridadService.CreateUser(this.formularioRegistro.value);
+      return this.seguridadService.CreateUser(this.formularioRegistro.value),this.router.navigate(['seguridad/login']);
 
       /* this.seguridadService.CreateUserByGet(this.formularioRegistro.value.email ,this.formularioRegistro.value.password)
       .subscribe((res:any)=>{
@@ -88,6 +88,7 @@ export class RegistroComponent implements OnInit {
       // let cliente = this.formularioRegistro.value;
     }else{
       this.resultado = "Hay datos inválidos en el formulario";
+      return "";
     }
       
   

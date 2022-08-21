@@ -24,7 +24,7 @@
                         </div>
                         <div style="width:90%" >
                             <label class="form-label" id="password" name="password" for="password">Password</label>
-                            <input formControlName="password" class="form-control" type="password" name="password" ngModel  >
+                            <input toggle formControlName="password" class="form-control" type="password" name="password" ngModel  >
                             <span style="color : red;" *ngIf="this.formularioRegistro.get('password')?.errors?.['pattern']">
                                 (password ha de tener minimo de 8 caracteres , minúsculas y mayúsculas , numeros y caracteres especiales)
                             </span>

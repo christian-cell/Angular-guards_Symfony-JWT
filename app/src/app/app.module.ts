@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InputTypeDirective } from './directives/input-type.directive';
 
 /*************************************** mat sidenav ************************************************/  
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -20,7 +19,6 @@ import { SideNavComponent } from './sideNav/pages/side-nav/side-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
-    InputTypeDirective,
     SideNavComponent
   ],
   imports: [

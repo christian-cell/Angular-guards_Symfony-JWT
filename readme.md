@@ -41,3 +41,7 @@ PARA CORRER EL DUMPER dentro del contenedor de php
 composer require symfony/debug-bundle --dev
 
 $ bin/console server:dump
+
+comprobamos si una ruta matchea con un metodo POST por ejemplo
+
+$ bin/console router:match /registro/nuevo --method POST
