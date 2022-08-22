@@ -1,0 +1,59 @@
+<div>
+
+    <span> familia de producto: {{ tipo_producto }} </span>
+    <div class="card productos_formulario_container " >
+        <div class="card  " style="width:90%;" >
+            <!-- (ngSubmit)="UserRegister(form)" #form="ngForm" -->
+            <form style="padding:10px;" [formGroup]="productosFormulario" (ngSubmit)="MandarCrearProducto()" action="">
+    
+                <div style="width:90%" >
+                    <label class="form-label" id="nombre" name="nombre" for="nombre">Nombre</label>
+                    <input formControlName="nombre"  type="text" name="nombre" ngModel  >
+                   <!--  <span style="color : red;" *ngIf="this.productosFormulario.get('nombre')?.errors?.['required']">
+                        (El nombre no puede quedar vacío)
+                    </span> -->
+                </div>
+                <div style="width:90%" >
+                    <label class="form-label" id="descripcion" name="descripcion" for="descripcion">descripcion</label>
+                    <input formControlName="descripcion"  type="text" name="descripcion" ngModel  >
+                    <!-- <span style="color : red;" *ngIf="this.productosFormulario.get('descripcion')?.errors?.['required']">
+                        la descripcion no puede estar vacia
+                    </span> -->
+                </div>
+                <div style="width:90%" >
+                    <label class="form-label" id="fabricante" name="fabricante" for="fabricante">fabricante</label>
+                    <input formControlName="fabricante"  type="text" name="fabricante" ngModel  >
+                    <!-- <span style="color : red;" *ngIf="this.productosFormulario.get('fabricante')?.errors?.['required']">
+                        el fabricante no puede estar vacia
+                    </span> -->
+                </div>
+                <div style="width:90%" >
+                    <label class="form-label" id="precio" name="precio" for="precio">precio</label>
+                    <input formControlName="precio"  type="text" name="precio" ngModel  >
+                   <!--  <span style="color : red;" *ngIf="this.productosFormulario.get('precio')?.errors?.['required']">
+                        el precio no puede estar vacia
+                    </span> -->
+                </div>
+                <div style="width:90%" >
+                    <label class="form-label" id="codigo_barras" name="codigo_barras" for="codigo_barras">codigo de barras</label>
+                    <input formControlName="codigo_barras"  type="text" name="codigo_barras" ngModel  >
+                   <!--  <span style="color : red;" *ngIf="this.productosFormulario.get('codigo_barras')?.errors?.['required']">
+                        la codigo de barras no puede estar vacia
+                    </span> -->
+                </div>
+    
+                <!-- At least 8 characters in length
+                Lowercase letters
+                Uppercase letters
+                Numbers
+                Special characters -->
+    
+                <div>
+                    <button class="btn btn-primary form_submit_button " type="submit" > Crear Producto </button>
+                </div>
+    
+            </form>
+            <!-- <div>{{resultado}}</div> -->
+        </div>
+    </div>
+</div>

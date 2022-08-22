@@ -5,6 +5,7 @@ import { ClienteNuevoComponent } from './pages/cliente-nuevo/cliente-nuevo.compo
 import { ClienteEditDialogComponent } from './pages/cliente-edit-dialog/cliente-edit-dialog.component';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ClientesRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class ClientesModule { }

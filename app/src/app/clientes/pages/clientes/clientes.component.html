@@ -20,7 +20,7 @@
             <td> {{cliente.edad}} </td>
             <td> {{cliente.email}} </td>
             <td>{{cliente.phone_number}}</td>
-            <td> <span (click)="IrEditarDialog(cliente.id)" >Editar</span> <span (click)="BorrarCliente(cliente.id)" > Borrar </span> </td>
+            <td> <span (click)="EditCliente(cliente.id)" >Editar</span> <br> <span (click)="BorrarCliente(cliente.id)" > Borrar </span> </td>
         </tr>
     </tbody>
 </table>

@@ -1,1 +1,24 @@
-<p>cliente-edit-dialog works!</p>
+<div class="cliente_nuevo_main_container" >
+    <div  >  
+        Editar Cliente
+    </div>
+    <div  class=" form_container " >
+        <form action="" (ngSubmit)="EditCliente(form)" #form="ngForm" >
+            <div class="mb-3" >
+                <input class="form-control" name="nombre" [(ngModel)]="cliente.nombre" type="text"></div>
+            <div class="mb-3" >
+                <input class="form-control" name="apellido_1" [(ngModel)]="cliente.apellido_1" type="text"></div>
+            <div class="mb-3" >
+                <input class="form-control" name="apellido_2" [(ngModel)]="cliente.apellido_2" type="text"></div>
+            <div class="mb-3" >
+                <input class="form-control" name="email" [(ngModel)]="cliente.email" type="email"></div>
+            <div class="mb-3" >
+                <input class="form-control" name="edad" [(ngModel)]="cliente.edad" type="text"></div>
+            <div class="mb-3" >
+                <input class="form-control" name="phone_number" [(ngModel)]="cliente.phone_number" type="text"></div>
+            <div>
+                <button class="btn btn-primary" type="submit">Edit Client</button>
+            </div>
+        </form>
+    </div>
+</div>

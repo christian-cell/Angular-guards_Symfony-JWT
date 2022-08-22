@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { enableDebugTools } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,16 +22,23 @@ export class ClientesService {
   }
 
   GetClientes(){
-
-    /* let token = window.localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }) */
-
-    // const requestOptions = { headers: headers };
     
     return this.http.get(environment.url + 'api/clientes/list' /* , requestOptions */);
+  }
+
+  GetCliente(id:number){
+    return this.http.get(environment.url + 'api/clientes/' + id /* , {responseType:'text'} */)
+  }
+
+  EditCliente(cliente:any , id:number){
+    return this.http.put(environment.url + 'api/clientes/' + id , cliente , {responseType:'text'})
+    
+  }
+
+  DeleteCliente(id:any){
+    return this.http.delete(environment.url + 'api/clientes/delete/' + id,  {responseType:'text'})
+
+    // .subscribe(() => this.status = 'Delete successful');
   }
 
 }
