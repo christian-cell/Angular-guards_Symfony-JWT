@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { InputPasswordModule } from '../directives/input-password/input-password.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,7 +29,12 @@ import { InputPasswordModule } from '../directives/input-password/input-password
     MatButtonModule,
     MatNativeDateModule,
     MatIconModule,
-    InputPasswordModule
+    InputPasswordModule,
+    RouterModule
+  ],
+  exports:[
+    LoginComponent,
+    RegistroComponent
   ]
 })
 export class SeguridadModule { }

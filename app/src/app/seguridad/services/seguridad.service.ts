@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,10 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class SeguridadService {
 
+  userLogin ? : Subject<any>
+
   constructor( 
     private http : HttpClient ,
     private router : Router
-  ) { }
+  ) {
+    this.userLogin = new Subject()
+  }
 
   /* CheckIfExist(email:any){
     return this.http.get(environment.url + 'registro/userChecker/' + email)
@@ -38,15 +43,18 @@ export class SeguridadService {
 
     return this.http.post(environment.url + 'api/login_check' , body)
     .toPromise().then((res:any)=>{
+
+      /* return res.token; */
       
       if(res){
         if(res.token){
           if(typeof(res.token) === 'string'){
             window.localStorage.setItem('token',res.token);
-            this.router.navigate(['clientes'])
+            
+            this.router.navigate(['clientes']);
           }
         }
-      }
+      } 
     })
   }
 }

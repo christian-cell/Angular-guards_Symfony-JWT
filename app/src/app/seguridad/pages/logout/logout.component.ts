@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-logout',
@@ -8,7 +13,11 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor( private router : Router ) { }
+  isLogged ? : Subject<any>;
+
+  constructor( private router : Router ) {
+    this.isLogged = new Subject()
+  }
 
   ngOnInit(): void {
     this.Logout();
@@ -16,6 +25,7 @@ export class LogoutComponent implements OnInit {
 
   Logout(){
     window.localStorage.removeItem('token');
+    
     this.router.navigate(['seguridad/login']);
   }
 }

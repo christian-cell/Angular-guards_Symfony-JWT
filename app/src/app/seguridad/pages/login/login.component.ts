@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SeguridadService } from '../../services/seguridad.service';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-login',
@@ -23,20 +24,19 @@ export class LoginComponent implements OnInit {
       Numbers
       Special characters
     */
-    password : new FormControl('', [
-      /* Validators.required,
-      Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}') */
-    ])
+    password : new FormControl('', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
   });
   
   constructor( 
     private router : Router ,
-    private seguridadService : SeguridadService
+    private seguridadService : SeguridadService,
+    private logoutComponent : LogoutComponent
   ) { }
 
 
 
   ngOnInit(): void {
+    this.logoutComponent.isLogged!.next('NO_LOGGED')
   }
 
   UserLog(/* form : NgForm */ ){
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
       console.log(this.formularioLogin.value);
 
-    return this.seguridadService.LogUser(this.formularioLogin.value)
+      return this.seguridadService.LogUser(this.formularioLogin.value)/* ,console.log(window.localStorage.getItem('token')); */
             
       
       // let cliente = this.formularioRegistro.value;

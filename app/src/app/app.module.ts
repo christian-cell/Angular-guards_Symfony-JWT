@@ -15,12 +15,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideNavComponent } from './sideNav/pages/side-nav/side-nav.component';
+import { SeguridadModule } from './seguridad/seguridad.module';
+import { LoginComponent } from './seguridad/pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +32,8 @@ import { SideNavComponent } from './sideNav/pages/side-nav/side-nav.component';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    SeguridadModule
   ],
   providers: [
     {

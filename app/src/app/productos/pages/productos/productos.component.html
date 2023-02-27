@@ -1,18 +1,18 @@
 <div>
     <div class="row d-flex justify-content-center " style="padding:20px;" >
-       <div class="col-xs-12 col-sm-10 col-md-4 col-lg-4  " >
+       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4  " >
         
          <!-- <button (click)="aVentaOnline()" > Producto Para venta Online </button> -->
          
         
-        <app-producto-nuevo (CrearProducto)="CrearProducto($event)" [tipo_producto]="tipo_producto" ></app-producto-nuevo>
+        <app-producto-nuevo [familia_producto]="familia_producto" (CrearProducto)="CrearProducto($event)" ></app-producto-nuevo>
         
         
         
         <!-- <button  > Crear Producto </button> -->
        </div>
 
-       <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8" >
+       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
           <!-- Button to clear selection -->
             <button (click)="clearSelection()">Clear Selection</button>
             <!-- AG Grid Angular Component -->
@@ -26,9 +26,17 @@
             [rowData]="rowData$ "
             [rowSelection]="'multiple'"
             [animateRows]="true"
-            
             (cellClicked)="onCellClicked($event)"
-            ></ag-grid-angular>
+            (gridReady)="onGridReady($event)"
+            >
+           <!-- 
+            [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [getRowStyle]="getRowStyle"
+      (gridReady)="onGridReady($event)"
+            -->
+         </ag-grid-angular>
        </div>
     </div>
 </div>

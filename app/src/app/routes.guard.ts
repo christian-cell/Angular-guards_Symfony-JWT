@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SeguridadService } from './seguridad/services/seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoutesGuard implements CanActivate {
   
-  constructor( private router: Router) {}
+  constructor( private router: Router , private seguridadService:SeguridadService) {}
   
   canActivate(
 
@@ -16,8 +17,10 @@ export class RoutesGuard implements CanActivate {
     
       console.log(window.localStorage.getItem('token'));  
     if(window.localStorage.getItem('token')){
+      this.seguridadService.userLogin?.next('LOGGED');
       return true;
     }else {
+      console.log('sin token');
       this.router.navigate(['seguridad/login'], {
         queryParams: {
           return: state.url

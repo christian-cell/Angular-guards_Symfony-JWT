@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,  EventEmitter,  Input,  OnInit, Output  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductosService } from 'src/app/productos/services/productos.service';
@@ -10,6 +10,8 @@ import { ProductosService } from 'src/app/productos/services/productos.service';
 })
 export class ProductoNuevoComponent implements OnInit {
 
+  
+
   productosFormulario = new FormGroup({
 
     nombre : new FormControl('' , [Validators.required]),
@@ -20,8 +22,8 @@ export class ProductoNuevoComponent implements OnInit {
 
   })
   
-  @Input('tipo_producto') tipo_producto ? : string;
-  @Output() CrearProducto : EventEmitter<any> = new EventEmitter; 
+  @Input('familia_producto') familia_producto ? :string
+  @Output() CrearProducto : EventEmitter<any> = new EventEmitter;
 
   constructor( 
     // private productosService : ProductosService, 
@@ -32,12 +34,15 @@ export class ProductoNuevoComponent implements OnInit {
   }
 
   MandarCrearProducto(){
-
-
+    
     if(this.productosFormulario.status === 'VALID'){
 
       this.CrearProducto.emit(this.productosFormulario.value);
+
+    }else{
+      console.log('formalario invalido');
     }
+
   }
 
 }

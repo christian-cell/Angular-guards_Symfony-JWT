@@ -4,6 +4,7 @@ import { ClientesService } from '../../services/clientes.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ClienteEditDialogComponent } from '../cliente-edit-dialog/cliente-edit-dialog.component';
+import { SeguridadService } from 'src/app/seguridad/services/seguridad.service';
 
 @Component({
   selector: 'app-clientes',
@@ -17,10 +18,12 @@ export class ClientesComponent implements OnInit {
   constructor(
     private clientesService : ClientesService,
     private router : Router,
-    public dialog: MatDialog,
+    public dialog: MatDialog/* , */
+    // private seguridadService : SeguridadService
   ) { }
 
   ngOnInit(): void {
+    // this.seguridadService.userLogin!.next('loggeado')
     this.GetClientes();
   }
 

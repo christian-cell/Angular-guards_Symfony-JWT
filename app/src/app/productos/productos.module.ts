@@ -8,6 +8,8 @@ import { AgGridModule } from 'ag-grid-angular';
 
 
 
+
+
 @NgModule({
   declarations: [
     ProductosComponent,
@@ -18,7 +20,8 @@ import { AgGridModule } from 'ag-grid-angular';
     ProductosRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule
+    AgGridModule,
+    
     
   ]
 })
